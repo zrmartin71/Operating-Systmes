@@ -37,8 +37,10 @@ public class Rmdp {
 					
 					for(int i = 0; i < a.length; i++) {
 					
-						if(a[i] != "") {
-						bLine.add(a[i]);
+						if(a[i] != " ") {
+							
+						int x = Integer.parseInt(a[i]);
+						bNum.add(x);
 						}
 					}
 					//System.out.print(a);
@@ -48,7 +50,7 @@ public class Rmdp {
 				}
 				}
 				
-				System.out.println(bLine);
+				System.out.println(bNum);
 				scan.close();
 				
 			}
