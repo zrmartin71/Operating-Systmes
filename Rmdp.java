@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class Rmdp {
 	static int rowsA, rowsB, columnsA, columnsB;
+	static List<String> bLine = new ArrayList<String>();
+	static List<Integer> bNum = new ArrayList<Integer>();
+	
 	public static void main(String[] args) {
 		File input;
 		if(args.length >0){
@@ -28,10 +31,24 @@ public class Rmdp {
 				//making sure i am grabbing the right lines
 				while(scan.hasNext()) {
 					String line = scan.nextLine();
-					if(!line.equals(dimensions)) {
-						System.out.println(line);
+					if(!line.equals(dimensions) && !line.equals("")) {
+							
+					String[] a = line.split(" ");
+					
+					for(int i = 0; i < a.length; i++) {
+					
+						if(a[i] != "") {
+						bLine.add(a[i]);
+						}
 					}
+					//System.out.print(a);
+					
+				//	bLine.add(a);	
+					
 				}
+				}
+				
+				System.out.println(bLine);
 				scan.close();
 				
 			}
