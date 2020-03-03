@@ -64,6 +64,41 @@ public class Rmdp {
 		}
 	}
 	
+	//will be used to populate Matrices
+	public static void makeMatrices(File input, String dimensions) {
+		Scanner scan;
+		Double [][] matrixA = new Double[rowsA][columnsA];
+		try {
+			scan = new Scanner(new BufferedReader(new FileReader(input.getAbsolutePath())));
+			//making sure i am grabbing the right lines
+			while(scan.hasNext()) {
+				String line = scan.nextLine();
+				if(line.equals(dimensions) || line.equals("")) {
+					continue;
+				}
+				
+				String[] row = line.split("  ");
+				
+				for(int rowA = 0; rowA < matrixA.length;rowA++) {
+					for(int colA = 0; colA < matrixA[rowA].length;colA++) {
+						for(int i = 0; i < row.length; i++) {
+							matrixA[rowA][colA] = Double.parseDouble(row[i]);
+							continue;
+						}
+					}
+				}
+				
+				break;
+			}
+			System.out.println(Arrays.deepToString(matrixA));
+			scan.close();
+		} 
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
 
 class Multiply_Mats implements Runnable{
