@@ -85,9 +85,29 @@ public class Rmdp {
 
 class Multiply_Mats implements Runnable{
 	String dimentions;
-	int[][] matrix_a;
-	int[][] martix_b;
+	String dimensions;
+	int rowA;
+	int colA;
+	int rowB;
+	int colB;
 
+public Multiply_Mats(int Ar, int Ac, int Br, int Bc) {
+	Ar = rowA;
+	Ac = colA;
+	Br = rowB;
+	Bc = colB;
+	
+	int[][] matrix_a;
+	int[][] matrix_b;
+	
+	matrix_a = new int[Ar][Ac];
+	matrix_b = new int[Br][Bc];
+
+	
+	
+	
+}
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
