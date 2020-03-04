@@ -67,7 +67,7 @@ public class Rmdp {
 	//will be used to populate Matrices
 	public static void makeMatrices(File input, String dimensions) {
 		Scanner scan;
-		Double [][] matrixA = new Double[rowsA][columnsA];
+		int[][] matrixA = new int[rowsA][columnsA];
 		try {
 			scan = new Scanner(new BufferedReader(new FileReader(input.getAbsolutePath())));
 			//making sure i am grabbing the right lines
@@ -78,23 +78,27 @@ public class Rmdp {
 				}
 				
 				String[] row = line.split("  ");
-				
-				for(int rowA = 0; rowA < matrixA.length;rowA++) {
-					for(int colA = 0; colA < matrixA[rowA].length;colA++) {
-						for(int i = 0; i < row.length; i++) {
-							matrixA[rowA][colA] = Double.parseDouble(row[i]);
-							continue;
+				int count = 0;
+				//matrixA
+				for(int rows = 0; rows < matrixA.length; rows++) {
+					for(int cols = 0; cols < matrixA[rows].length; cols++) {
+						if(count < row.length) {
+							matrixA[rows][cols] = Integer.parseInt(row[count]);
+							count++;
+						}
+						if(count >= row.length) {
+							count = 0;
+							row = scan.nextLine().split("  ");
+							break;
 						}
 					}
 				}
-				
-				break;
 			}
+				
 			System.out.println(Arrays.deepToString(matrixA));
 			scan.close();
 		} 
 		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
